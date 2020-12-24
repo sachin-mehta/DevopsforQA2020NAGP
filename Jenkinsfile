@@ -37,6 +37,26 @@ pipeline{
 				}
 			}
 		}
+	    stage ('Upload to Artifactory')
+		{
+			steps
+			{
+				rtMavenDeployer (
+                    id: 'deployer',
+                    serverId: '123456789@artifactory',
+                    releaseRepo: 'sachinmehta.e27',
+                    snapshotRepo: 'sachinmehta.e27'
+                )
+                rtMavenRun (
+                    pom: 'pom.xml',
+                    goals: 'clean install',
+                    deployerId: 'deployer',
+                )
+                rtPublishBuildInfo (
+                    serverId: '123456789@artifactory',
+                )
+			}
+		}
     }
     post{
         success{
