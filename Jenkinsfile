@@ -44,8 +44,8 @@ pipeline{
 				rtMavenDeployer (
                     id: 'deployer',
                     serverId: '123456789@artifactory',
-                    releaseRepo: 'sachinmehta.e27',
-                    snapshotRepo: 'sachinmehta.e27'
+                    releaseRepo: 'sachin.nagpqa2020',
+                    snapshotRepo: 'sachin.nagpqa2020'
                 )
                 rtMavenRun (
                     pom: 'pom.xml',
